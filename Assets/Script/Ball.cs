@@ -5,7 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     Rigidbody rb;
-    public float bounceForce = 400f;
+    public float bounceForce = 600f;
 
     public GameObject splitPrefap;
 

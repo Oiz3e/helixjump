@@ -18,14 +18,19 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI currentLevelIndex;
     public TextMeshProUGUI nextLevelIndex;
-    public Button resetButton; // Referensi ke Button reset
-    public Button playAgainButton; // Referensi ke Button play again
-
+    public Button resetButton;
+    public Button playAgainButton;
     public Slider ProgressBar;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI totalScoreText;
+    public TextMeshProUGUI gameOverScoreText;
+
+    private int initialScore;
 
     public void Awake()
     {
         CurrentLevelIndex = PlayerPrefs.GetInt("CurrentLevelIndex", 1);
+        ScoreManager.score = PlayerPrefs.GetInt("PlayerScore", 0);
     }
 
     private void Start()
@@ -34,8 +39,10 @@ public class GameManager : MonoBehaviour
         noOfPassingRings = 0;
         gameOver = false;
         levelWin = false;
-        resetButton.gameObject.SetActive(false); // Sembunyikan tombol reset di awal
-        playAgainButton.gameObject.SetActive(false); // Sembunyikan tombol play again di awal
+        resetButton.gameObject.SetActive(false);
+        playAgainButton.gameObject.SetActive(false);
+        
+        initialScore = ScoreManager.score;
     }
 
     private void Update()
@@ -44,20 +51,15 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             gameOverPanel.SetActive(true);
-            resetButton.gameObject.SetActive(true); // Tampilkan tombol reset ke level 1 saat game over
-            playAgainButton.gameObject.SetActive(true); // Tampilkan tombol play again saat game over
-
-            // Cek input untuk melanjutkan level
-            if (Input.GetMouseButtonDown(0)) // Jika layar ditekan
-            {
-                // Hanya melanjutkan level jika tombol play again tidak ditekan
-                // Kita tidak memanggil ContinueLevel() di sini
-            }
+            resetButton.gameObject.SetActive(true);
+            playAgainButton.gameObject.SetActive(true);
+            gameOverScoreText.text = "Total Score: " + ScoreManager.score;
+            scoreText.gameObject.SetActive(false);
         }
         else
         {
-            resetButton.gameObject.SetActive(false); // Sembunyikan tombol reset jika tidak game over
-            playAgainButton.gameObject.SetActive(false); // Sembunyikan tombol play again jika tidak game over
+            resetButton.gameObject.SetActive(false);
+            playAgainButton.gameObject.SetActive(false);
         }
 
         currentLevelIndex.text = CurrentLevelIndex.ToString();
@@ -66,12 +68,19 @@ public class GameManager : MonoBehaviour
         int progress = noOfPassingRings * 100 / FindObjectOfType<HelixManager>().noOfRings;
         ProgressBar.value = progress;
 
+        scoreText.text = " " + ScoreManager.score;
+
         if (levelWin)
         {
             levelWinPanel.SetActive(true);
+            totalScoreText.text = "Total Score: " + ScoreManager.score;
+            scoreText.gameObject.SetActive(false);
+
             if (Input.GetMouseButtonDown(0))
             {
                 PlayerPrefs.SetInt("CurrentLevelIndex", CurrentLevelIndex + 1);
+                PlayerPrefs.SetInt("PlayerScore", ScoreManager.score);
+                PlayerPrefs.Save();
                 SceneManager.LoadScene(0);
             }
         }
@@ -79,33 +88,34 @@ public class GameManager : MonoBehaviour
 
     public void ResetLevels()
     {
-        Debug.Log("Current Level Index before reset: " + PlayerPrefs.GetInt("CurrentLevelIndex"));
-        PlayerPrefs.SetInt("CurrentLevelIndex", 1); // Set level ke 1
-        PlayerPrefs.Save(); // Simpan perubahan
-        Debug.Log("Resetting level to level 1."); // Log untuk reset level
-        SceneManager.LoadScene(0); // Memuat ulang scene (pastikan scene 0 adalah level awal)
+        PlayerPrefs.SetInt("CurrentLevelIndex", 1);
+        PlayerPrefs.SetInt("PlayerScore", 0);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(0);
     }
 
     public void PlayAgain()
     {
-        Debug.Log("Playing again."); // Log saat mengulang level
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Memuat ulang scene saat ini
+        ScoreManager.score = initialScore;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ContinueLevel()
     {
-        Debug.Log("Continuing level."); // Log saat mengulang level
-        Time.timeScale = 1f; // Mengaktifkan kembali waktu
-        gameOver = false; // Set gameOver ke false
-        gameOverPanel.SetActive(false); // Sembunyikan panel game over
-
-        // Memuat ulang level saat ini
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Memuat ulang scene saat ini
+        Time.timeScale = 1f;
+        gameOver = false;
+        gameOverPanel.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OnResetTextClicked() // Fungsi ini dipanggil saat tombol reset ditekan
+    public void OnResetTextClicked()
     {
-        Debug.Log("Reset text clicked."); // Log saat teks reset diklik
-        ResetLevels(); // Panggil fungsi reset level
+        ResetLevels();
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("PlayerScore", ScoreManager.score);
+        PlayerPrefs.Save();
     }
 }
