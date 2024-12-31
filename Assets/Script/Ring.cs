@@ -16,7 +16,12 @@ public class Ring : MonoBehaviour
     }
 
     private void Update() {
+
+        
         if (transform.position.y > player.transform.position.y + 0.1f) {
+
+            GameManager.noOfPassingRings++;
+            FindObjectOfType<AudioManager> ().Play ("Whoosh");
             for (int i = 0; i < childRings.Length; i++) {
                 childRings[i].GetComponent<Rigidbody>().isKinematic = false;
                 childRings[i].GetComponent<Rigidbody>().useGravity = true;
