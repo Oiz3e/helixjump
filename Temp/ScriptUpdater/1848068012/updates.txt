@@ -1,0 +1,5 @@
+Temp/ScriptUpdater/1848068012\105565391_SunShafts.cs => Assets/Standard Assets/Effects/ImageEffects/Scripts/SunShafts.cs
+Temp/ScriptUpdater/1848068012\1015907290_Bloom.cs => Assets/Standard Assets/Effects/ImageEffects/Scripts/Bloom.cs
+Temp/ScriptUpdater/1848068012\1045780986_AICharacterControl.cs => Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/AICharacterControl.cs
+Temp/ScriptUpdater/1848068012\24593513_DepthOfField.cs => Assets/Standard Assets/Effects/ImageEffects/Scripts/DepthOfField.cs
+Temp/ScriptUpdater/1848068012\1336509190_BloomAndFlares.cs => Assets/Standard Assets/Effects/ImageEffects/Scripts/BloomAndFlares.cs
