@@ -21,7 +21,14 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
-        GetComponent<AudioSource>().Play();
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("AudioSource component is missing on this GameObject.");
+        }
     }
 }
-

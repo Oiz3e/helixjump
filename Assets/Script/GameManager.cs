@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("CurrentLevelIndex", CurrentLevelIndex + 1);
                 PlayerPrefs.SetInt("PlayerScore", ScoreManager.score);
                 PlayerPrefs.Save();
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
         }
     }
