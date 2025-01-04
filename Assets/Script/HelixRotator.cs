@@ -5,7 +5,7 @@ using UnityEngine;
 public class HelixRotator : MonoBehaviour
 {
     public float rotationSpeed = 300f;
-    public float rotationSpeedAndroid = 50f;
+    public float rotationSpeedAndroid = 0.2f;
 
     private void Update () {
 

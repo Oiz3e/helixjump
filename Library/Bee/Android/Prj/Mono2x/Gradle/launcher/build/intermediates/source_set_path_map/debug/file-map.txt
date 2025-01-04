@@ -1,0 +1,9 @@
+com.DefaultCompany.horrorlixjump.launcher-pngs-0 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\generated\res\pngs\debug
+com.DefaultCompany.horrorlixjump.launcher-resValues-1 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\generated\res\resValues\debug
+com.DefaultCompany.horrorlixjump.launcher-rs-2 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\generated\res\rs\debug
+com.DefaultCompany.horrorlixjump.launcher-mergeDebugResources-3 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.DefaultCompany.horrorlixjump.launcher-mergeDebugResources-4 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.DefaultCompany.horrorlixjump.launcher-merged_res-5 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\intermediates\merged_res\debug
+com.DefaultCompany.horrorlixjump.launcher-debug-6 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\debug\res
+com.DefaultCompany.horrorlixjump.launcher-main-7 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\res
+com.DefaultCompany.horrorlixjump.launcher-packaged_res-8 D:\Tugas\Semester 5\Computer Graphics Animations\UAS\helixjump\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\packaged_res\debug
